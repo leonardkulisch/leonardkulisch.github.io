@@ -4,264 +4,623 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="icon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Leonard Kulisch, Health Psychologist">
-  <meta name="keywords" content="Leonard Kulisch, Leon Kulisch, Bochum, Leipzig, RUB, KJP, cancer, children, culture, separation anxiety">
-  <title>Leonard K. Kulisch - Health & Clinical Child Psychology</title>
+  <meta
+    name="description"
+    content="Leonard K. Kulisch, PhD Candidate in Health & Clinical Child Psychology"
+  />
+  <meta
+    name="keywords"
+    content="Leonard Kulisch, Leon Kulisch, Bochum, Leipzig, RUB, KJP, cancer, children, culture, religion, separation anxiety"
+  />
+  <title>Leonard K. Kulisch – Health & Clinical Child Psychology</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
     :root {
-      --mint-green: #a0ebbe;
-      --light-mint: #e5f9f0;
-      --text-dark: #2e2e2e;
-      --accent-dark: #429a77;
+      --bg: #f5f7f8;
+      --surface: #ffffff;
+      --surface-soft: #eef3f1;
+      --text: #1f2933;
+      --text-soft: #52606d;
+      --heading: #102a43;
+      --accent: #2f6f62;
+      --accent-dark: #24584e;
+      --border: #d9e2e1;
+      --shadow: 0 10px 30px rgba(16, 42, 67, 0.08);
+      --radius: 16px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Verdana, sans-serif;
-      line-height: 1.6;
       margin: 0;
-      padding: 0;
-      background-color: var(--light-mint);
-      color: var(--text-dark);
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
     }
 
-    header, footer {
-      background-color: var(--mint-green);
-      color: var(--text-dark);
-      padding: 1rem 2rem;
-      text-align: center;
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(217, 226, 225, 0.9);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 1rem;
     }
 
     nav a {
-      color: var(--text-dark);
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 0.25rem 0;
+      position: relative;
     }
 
-    nav a:hover {
-      color: var(--accent-dark);
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+      background:
+        linear-gradient(to bottom, #eef4f2 0%, #f5f7f8 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      margin: 0 0 0.75rem;
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--heading);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text .subtitle {
+      margin: 0 0 1.25rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+
+    .hero-text .intro {
+      max-width: 62ch;
+      margin: 0 0 1.5rem;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.75rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .button:hover,
+    .button:focus {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(47, 111, 98, 0.18);
+    }
+
+    .button-primary:hover,
+    .button-primary:focus {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background: var(--surface);
+      color: var(--heading);
+      border: 1px solid var(--border);
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
+    }
+
+    .profile-pic {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 18px;
+      margin: 0 auto 1rem;
+    }
+
+    .hero-card .info-line {
+      margin: 0.45rem 0;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    .hero-card strong {
+      color: var(--heading);
     }
 
     main {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(160, 235, 190, 0.2);
-    }
-
-    h2 {
-      color: var(--accent-dark);
+      padding: 2rem 0 4rem;
     }
 
     section {
       margin-bottom: 2rem;
+      scroll-margin-top: 96px;
     }
 
-    ul {
-      list-style-type: square;
-      padding-left: 1.5rem;
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
     }
 
-    .profile-pic {
-      float: right;
-      margin-left: 1.5rem;
-      border-radius: 8px;
-      width: 165px;
-      height: 200px;
-      object-fit: cover;
-      border: 2px solid var(--mint-green);
+    h2 {
+      margin-top: 0;
+      margin-bottom: 1.1rem;
+      font-family: "Source Serif 4", serif;
+      font-size: 2rem;
+      line-height: 1.2;
+      color: var(--heading);
     }
 
-    a {
+    h3 {
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.08rem;
       color: var(--accent-dark);
     }
 
-    a:hover {
-      text-decoration: underline;
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    .compact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .compact-list li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      margin: 0;
+    }
+
+    .compact-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .pub-category {
+      margin-top: 2rem;
+      padding-top: 0.5rem;
+    }
+
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pub-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      margin: 0;
+    }
+
+    .pub-list li:last-child {
+      border-bottom: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .contact-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-links li {
+      margin-bottom: 0.7rem;
+    }
+
+    .site-footer {
+      padding: 2rem 0 3rem;
+      color: var(--text-soft);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .muted {
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      .hero-card {
+        max-width: 380px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.85rem 0;
+      }
+
+      nav {
+        justify-content: flex-start;
+        gap: 0.75rem 1rem;
+      }
+
+      .section-card {
+        padding: 1.35rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+      }
     }
   </style>
 </head>
 
-
-
-
 <body>
-  <header>
-    <h1>Leonard K. Kulisch, M.Sc.</h1>
-    <p>PhD Candidate | Health & Clinical Psychology</p>
-    <nav>
-      <a href="#about"><u>About</u></a>
-      <a href="#projects"><u>Projects</u></a>
-      <a href="#publications"><u>Publications</u></a>
-      <a href="#teaching"><u>Teaching</u></a>
-      <a href="#grants"><u>Grants</u></a>
-      <a href="#memberships"><u>Memberships</u></a>
-      <a href="#contact"><u>Contact</u></a>      
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Leonard K. Kulisch</div>
+      <nav aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#grants">Grants</a>
+        <a href="#memberships">Memberships</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Leonard K. Kulisch, M.Sc.</h1>
+        <p class="subtitle">PhD Candidate | Health & Clinical Child Psychology</p>
+        <p class="intro">
+          I am a PhD student and researcher at Ruhr University Bochum and the German Center for Mental Health, interested in Global Family Wellbeing. My research explores how physical health, cognitive factors, and socio-cultural frameworks shape family dynamics. Currently, I study separation anxiety in children across different cultural contexts. In my work, I prioritize innovative research methods and Open Science practices.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#publications">View Publications</a>
+          <a class="button button-secondary" href="#contact">Contact</a>
+          <a class="button button-secondary" href="https://scholar.google.com/citations?user=Ixd0u3YAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Profile summary">
+        <img src="photo.png" alt="Portrait of Leonard K. Kulisch" class="profile-pic" />
+        <p class="info-line"><strong>Affiliation:</strong> Ruhr University Bochum</p>
+        <p class="info-line"><strong>Research area:</strong> Public Mental Health, Child Anxiety, Prevention, Culture</p>
+        <p class="info-line"><strong>Location:</strong> Bochum, Germany</p>
+      </aside>
+    </div>
+  </section>
+
   <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <img src="photo.png" alt="Profile Photo" class="profile-pic">
-      <p>I am a PhD student and researcher at Ruhr University Bochum and the German Center for Mental Health, interested in Global Family Wellbeing. My research explores how physical health, cognitive factors, and socio-cultural frameworks shape family dynamics. Currently, I study separation anxiety in children across different cultural contexts. In my work, I prioritize innovative research methods and Open Science practices.</p>
+    <div class="container">
+      <section id="projects">
+        <div class="section-card">
+          <h2>Current Projects</h2>
+          <ul class="compact-list">
+            <li>
+              <strong>Global Cultural Change</strong> – Associations Between Cultural Socialization Goals and Child Anxiety
+              (<a href="https://fbz-bochum.de/developmental-psychopathology-neu" target="_blank" rel="noopener noreferrer">fbz-bochum.de</a>)
+            </li>
+            <li>
+              <strong>W.ELT</strong> – Was Eltern wichtig ist! Culture and Parental Perceptions of Child Behaviors
+              (<a href="https://fbz-bochum.de/developmental-psychopathology-neu" target="_blank" rel="noopener noreferrer">fbz-bochum.de</a>)
+            </li>
+            <li>
+              <strong>IMPECC-De/Tk</strong> – Impact of Pediatric Cancer on Families Across Cultures
+              (<a href="https://fbz-bochum.de/developmental-psychopathology-neu" target="_blank" rel="noopener noreferrer">fbz-bochum.de</a>)
+            </li>
+            <li>
+              <strong>Co-Sep Study</strong> – Coregulation Dynamics Between Mothers and Children in Separation Situations
+              (<a href="https://fbz-bochum.de/developmental-psychopathology-neu" target="_blank" rel="noopener noreferrer">fbz-bochum.de</a>)
+            </li>
+            <li>
+              <strong>Urban Mental Health</strong> – Promoting the mental health of children, adolescents, and their families in urban contexts, with a special focus on neighborhoods with low socio-economic background
+              (<a href="https://www.dzpg.org/en/research/projects" target="_blank" rel="noopener noreferrer">dzpg.org</a>)
+            </li>
+            <li>
+              <strong>Mapping Developmental Expectations Across WEIRD Cultures</strong>
+              (<a href="https://www.centerforappliedcogsci.com" target="_blank" rel="noopener noreferrer">centerforappliedcogsci.com</a>)
+            </li>
+          </ul>
+        </div>
+      </section>
 
-      <h3>Research Interests</h3>
-      <ul>
-        <li>Prevention in childhood</li>
-        <li>Social & cultural factors</li>
-        <li>Anxiety disorders</li>
-        <li>Chronic illnesses</li>
-        <li>Research methods and statistics</li>
-      </ul>
-    </section>
+      <section id="publications">
+        <div class="section-card">
+          <h2>Publications</h2>
+          <p class="muted">
+            Selected academic output including peer-reviewed articles, talks, conference presentations, and outreach writing.
+          </p>
 
-    <section id="projects">
-      <h2>Current Projects</h2>
-      <ul>
-        <li>Global Cultural Change - Associations Between Cultural Socialization Goals and Child Anxiety (<a href="https://fbz-bochum.de/developmental-psychopathology-neu">fbz-bochum.de</a>)</li>
-        <li>W.ELT – Was Eltern wichtig ist! Culture and Parental Perceptions of Child Behaviors (<a href="https://fbz-bochum.de/developmental-psychopathology-neu">fbz-bochum.de</a>)</li>
-        <li>IMPECC-De/Tk - Impact of Pediatric Cancer on Families Across Cultures (<a href="https://fbz-bochum.de/developmental-psychopathology-neu">fbz-bochum.de</a>)</li>
-        <li>Co-Sep Study - Coregulation Dynamics Between Mothers and Children in Separation Situations (<a href="https://fbz-bochum.de/developmental-psychopathology-neu">fbz-bochum.de</a>)</li>
-        <li>Urban Mental Health - Promoting the mental health of children, adolescents, and their families in an urban context with a special focus on neighborhoods with a low socio-economic background (<a href="https://www.dzpg.org/en/research/projects">dzpg.org</a>)</li>
-        <li>Mapping Developmental Expectations Across WEIRD Cultures (<a href="https://www.centerforappliedcogsci.com">centerforappliedcogsci.com</a>)</li>
-      </ul>
-    </section>
+          <div class="pub-category">
+            <h3>Peer-reviewed articles (11)</h3>
+            <ul class="pub-list">
+              <li><strong>Kulisch, L. K.</strong>, Domínguez Rojas, A. L., Schneider, S., &amp; Voigt, B. (2026). Global Cultural Change and Anxiety in Children and Adolescents: Analyzing Socialization Goals Over Three Decades in 70 Countries. <em>Developmental Science, 29</em>(3). <a href="https://doi.org/10.1111/desc.70157" target="_blank" rel="noopener noreferrer">https://doi.org/10.1111/desc.70157</a></li>
 
-<section id="publications">
-  <h2>Publications</h2>
+              <li>Schepper, F., Santel, A., Herrmann, J., Herzog, K., <strong>Kulisch, L. K.</strong>, Kühl, J. S., &amp; Martini, J. (2025). Psychometric Properties of the Fear of Progression Questionnaire for Children in Two German Samples (Acute Treatment and Follow-Up Care). <em>Psycho-Oncology, e70254</em>. <a href="https://doi.org/10.1002/pon.70254" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/pon.70254</a></li>
 
-  <h3>Peer-reviewed articles (11)</h3>
-  <ul>
+              <li>Engelhardt-Lohrke, C., Schlüter, L., <strong>Kulisch, L. K.</strong>, Förderer, M., &amp; Jagla-Franke, M. (2025). Lebensqualität von Geschwistern von Kindern mit chronischen Erkrankungen: Übereinstimmungen von Selbst- und Elternbericht. <em>Prävention und Gesundheitsförderung</em>. <a href="https://doi.org/10.1007/s11553-025-01243-2" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s11553-025-01243-2</a></li>
 
-    <li><strong>Kulisch, L. K.</strong>, Domínguez Rojas, A. L., Schneider, S., & Voigt, B. (2026). Global Cultural Change and Anxiety in Children and Adolescents: Analyzing Socialization Goals Over Three Decades in 70 Countries. <em>Developmental Science, 29</em>(3). https://doi.org/10.1111/desc.70157</li>
+              <li>Kranhold, A.-L., Neuhoff, L., Bunz, M., Derhardt, R., Schreiber, F., Popp, L., <strong>Kulisch, L. K.</strong>, Schneider, S., Christiansen, H., In-Albon, T., Walper, S., &amp; Bartnick, C. (2025). Die Helikopter-Eltern der Forschung. <em>Kindheit und Entwicklung, 34</em>(1), 5–12. <a href="https://doi.org/10.1026/0942-5403/a000474" target="_blank" rel="noopener noreferrer">https://doi.org/10.1026/0942-5403/a000474</a></li>
 
-    <li>Schepper, F., Santel, A., Herrmann, J., Herzog, K., <strong>Kulisch, L. K.</strong>, Kühl, J. S., & Martini, J. (2025). Psychometric Properties of the Fear of Progression Questionnaire for Children in Two German Samples (Acute Treatment and Follow-Up Care). <em>Psycho-Oncology, e70254</em>. https://doi.org/10.1002/pon.70254</li>
+              <li>Popp, L., Voigt, B., Julich, A., König, H.-H., Brettschneider, C., <strong>Kulisch, L. K.</strong>, Sterner, P., Falkai, P., &amp; Schneider, S. (2025). Urban Mental Health: Förderung der psychischen Gesundheit von jungen Menschen in der Stadt. <em>Kindheit und Entwicklung, 34</em>(1), 23–32. <a href="https://doi.org/10.1026/0942-5403/a000471" target="_blank" rel="noopener noreferrer">https://doi.org/10.1026/0942-5403/a000471</a></li>
 
-    <li>Engelhardt-Lohrke, C., Schlüter, L., <strong>Kulisch, L. K.</strong>, Förderer, M., & Jagla-Franke, M. (2025). Lebensqualität von Geschwistern von Kindern mit chronischen Erkrankungen: Übereinstimmungen von Selbst- und Elternbericht. <em>Prävention und Gesundheitsförderung</em>. https://doi.org/10.1007/s11553-025-01243-2</li>
+              <li>Herrmann, J., Santel, A., <strong>Kulisch, L. K.</strong>, Kern, L., Hoffmann, R., Engelhardt-Lohrke, C., … Schepper, F. (2024). Pilotierung einer Intervention zur Bewältigung von Progredienzangst in Familien mit einem Kind mit Krebserkrankung: Zufriedenheit, Manualtreue und Anwendbarkeit. <em>Zeitschrift für Klinische Psychologie und Psychotherapie, 53</em>(2), 72–83. <a href="https://doi.org/10.1026/1616-3443/a000758" target="_blank" rel="noopener noreferrer">https://doi.org/10.1026/1616-3443/a000758</a></li>
 
-    <li>Kranhold, A.-L., Neuhoff, L., Bunz, M., Derhardt, R., Schreiber, F., Popp, L., <strong>Kulisch, L. K.</strong>, Schneider, S., Christiansen, H., In-Albon, T., Walper, S., & Bartnick, C. (2025). Die Helikopter-Eltern der Forschung. <em>Kindheit und Entwicklung, 34</em>(1), 5–12. https://doi.org/10.1026/0942-5403/a000474</li>
+              <li><strong>Kulisch, L. K.</strong>, Engelhardt-Lohrke, C., &amp; Jagla-Franke, M. (2024). Coping behaviours among siblings of children with chronic health conditions. <em>Advances in Mental Health, 23</em>(1), 4–20. <a href="https://doi.org/10.1080/18387357.2024.2329092" target="_blank" rel="noopener noreferrer">https://doi.org/10.1080/18387357.2024.2329092</a></li>
 
-    <li>Popp, L., Voigt, B., Julich, A., König, H.-H., Brettschneider, C., <strong>Kulisch, L. K.</strong>, Sterner, P., Falkai, P., & Schneider, S. (2025). Urban Mental Health: Förderung der psychischen Gesundheit von jungen Menschen in der Stadt. <em>Kindheit und Entwicklung, 34</em>(1), 23–32. https://doi.org/10.1026/0942-5403/a000471</li>
+              <li><strong>Kulisch, L. K.</strong>, Arumäe, K., Briley, D. A., &amp; Vainik, U. (2023). Triangulating causality between childhood obesity and neurobehavior: Behavioral genetic and longitudinal evidence. <em>Developmental Science, 26</em>(6). <a href="https://doi.org/10.1111/desc.13392" target="_blank" rel="noopener noreferrer">https://doi.org/10.1111/desc.13392</a></li>
 
-    <li>Herrmann, J., Santel, A., <strong>Kulisch, L. K.</strong>, Kern, L., Hoffmann, R., Engelhardt-Lohrke, C., … Schepper, F. (2024). Pilotierung einer Intervention zur Bewältigung von Progredienzangst in Familien mit einem Kind mit Krebserkrankung: Zufriedenheit, Manualtreue und Anwendbarkeit. <em>Zeitschrift für Klinische Psychologie und Psychotherapie, 53</em>(2), 72–83. https://doi.org/10.1026/1616-3443/a000758</li>
+              <li><strong>Kulisch, L. K.</strong>, Herrmann, J., Herzog, K., Einsiedel, H. G., Kamm-Thonwart, R., Hoffmann, R., Jäschke, Y., Martini, J., &amp; Schepper, F. (2023). Screening zur Einschätzung des psychosozialen Nachsorgebedarfs in der pädiatrischen Onkologie (NPO-11) für Selbst- und Elternbericht. <em>Klinische Pädiatrie, 235</em>(3), 178–184. <a href="https://doi.org/10.1055/a-2070-7720" target="_blank" rel="noopener noreferrer">https://doi.org/10.1055/a-2070-7720</a></li>
 
-    <li><strong>Kulisch, L. K.</strong>, Engelhardt-Lohrke, C., & Jagla-Franke, M. (2024). Coping behaviours among siblings of children with chronic health conditions. <em>Advances in Mental Health, 23</em>(1), 4–20. https://doi.org/10.1080/18387357.2024.2329092</li>
+              <li>Sievert, C.<sup>†</sup>, <strong>Kulisch, L. K.</strong><sup>†</sup>, Engelhardt-Lohrke, C., Kowalewski, K., &amp; Jagla-Franke, M. (2023). Risikofaktoren bei Geschwistern chronisch kranker/behinderter Kinder. <em>Prävention und Gesundheitsförderung</em>. <a href="https://doi.org/10.1007/s11553-023-01044-5" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s11553-023-01044-5</a><br><sup>†</sup> Equal contribution</li>
 
-    <li><strong>Kulisch, L. K.</strong>, Arumäe, K., Briley, D. A., & Vainik, U. (2023). Triangulating causality between childhood obesity and neurobehavior: Behavioral genetic and longitudinal evidence. <em>Developmental Science, 26</em>(6). https://doi.org/10.1111/desc.13392</li>
+              <li>Engelhardt-Lohrke, C., <strong>Kulisch, L. K.</strong>, Schepper, F., Herrmann, J., Herzog, K., &amp; Martini, J. (2022). Resilienzförderung bei Geschwistern von kranken und behinderten Kindern: Welche Rolle spielen das Geschlecht, das Alter und die Geburtenreihenfolge im Präventionsprogramm GeschwisterTREFF „Jetzt bin ICH mal dran!“. <em>Prävention und Gesundheitsförderung, 17</em>, 320–327. <a href="https://doi.org/10.1007/s11553-021-00880-7" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s11553-021-00880-7</a></li>
+            </ul>
+          </div>
 
-    <li><strong>Kulisch, L. K.</strong>, Herrmann, J., Herzog, K., Einsiedel, H. G., Kamm-Thonwart, R., Hoffmann, R., Jäschke, Y., Martini, J., & Schepper, F. (2023). Screening zur Einschätzung des psychosozialen Nachsorgebedarfs in der pädiatrischen Onkologie (NPO-11) für Selbst- und Elternbericht. <em>Klinische Pädiatrie, 235</em>(3), 178–184. https://doi.org/10.1055/a-2070-7720</li>
+          <div class="pub-category">
+            <h3>Articles without peer review (1)</h3>
+            <ul class="pub-list">
+              <li>Engelhardt-Lohrke, C., <strong>Kulisch, L. K.</strong>, &amp; Jagla-Franke, M. (2021). COVID-19-Pandemie: Geschwister von Kindern mit Erkrankung oder Behinderung. <em>Kinder- und Jugendmedizin, 21</em>(1), 66.</li>
+            </ul>
+          </div>
 
-    <li>Sievert, C.<sup>†</sup>, <strong>Kulisch, L. K.</strong><sup>†</sup>, Engelhardt-Lohrke, C., Kowalewski, K., & Jagla-Franke, M. (2023). Risikofaktoren bei Geschwistern chronisch kranker/behinderter Kinder. <em>Prävention und Gesundheitsförderung</em>. https://doi.org/10.1007/s11553-023-01044-5  
-    <br><sup>†</sup> Equal contribution</li>
+          <div class="pub-category">
+            <h3>Invited talks (5)</h3>
+            <ul class="pub-list">
+              <li><strong>Kulisch, L. K.</strong>, Dong, S., Lu, S., Schneider, S., &amp; Voigt, B. (2025, December). Pathology or normality? How parents in different cultures assess symptoms of anxiety and seek help. Invited talk at the Personality Psychology Research Colloquium at Ruhr University Bochum, Bochum, Germany.</li>
+              <li><strong>Kulisch, L. K.</strong> (2025, August). Cultural change, socialization norms, and child anxiety. Invited talk at the Center for Applied Cognitive Science Research Colloquium at the University of Texas at Austin, Austin, USA.</li>
+              <li><strong>Kulisch, L. K.</strong>, Dong, S., Lu, S., Schneider, S., &amp; Voigt, B. (2025, July). Ist das noch normal? Wie Eltern in verschiedenen Kulturen Angstsymptome bewerten und Hilfe suchen. Invited talk at the Psychological Research Methods and Evaluation Research Colloquium at Hildesheim University, Hildesheim, Germany.</li>
+              <li><strong>Kulisch, L. K.</strong> (2025, July). The IMPECC-De study: IMpact of PEdiatric Cancer on families across Cultures. Invited talk at the West German Proton Therapy Center (WPE) Research Colloquium at Essen University Hospital, Essen, Germany.</li>
+              <li><strong>Kulisch, L. K.</strong>, Plank, L., Exner, A., Schneider, S., Seehagen, S., Zlomuzica, A., &amp; Voigt, B. (2024, May). Coregulation dynamics between mothers and children in separation situations: Does social orientation influence separation anxiety symptoms? Invited talk at the Developmental Psychology Research Colloquium at Ruhr University Bochum, Bochum, Germany.</li>
+            </ul>
+          </div>
 
-    <li>Engelhardt-Lohrke, C., <strong>Kulisch, L. K.</strong>, Schepper, F., Herrmann, J., Herzog, K., & Martini, J. (2022). Resilienzförderung bei Geschwistern von kranken und behinderten Kindern: Welche Rolle spielen das Geschlecht, das Alter und die Geburtenreihenfolge im Präventionsprogramm GeschwisterTREFF „Jetzt bin ICH mal dran!“. <em>Prävention und Gesundheitsförderung, 17</em>, 320–327. https://doi.org/10.1007/s11553-021-00880-7</li>
-  </ul>
+          <div class="pub-category">
+            <h3>Conference presentations (5)</h3>
+            <ul class="pub-list">
+              <li><strong>Kulisch, L. K.</strong>, Dong, S., Lu, S., Schneider, S., &amp; Voigt, B. (2025, March). Pathology or normalcy? Culture and child separation anxiety. Presentation at Situated Cognition Spring School 2025, Bochum, Germany.</li>
+              <li><strong>Kulisch, L. K.</strong>, Lu, S., Dong, S., Schneider, S., &amp; Voigt, B. (2024, September). The influence of culture on the parental perception of child separation anxiety disorder symptoms in Germany and China. Presentation at 53rd DGPs Congress / 15th ÖGP Conference, Vienna, Austria.</li>
+              <li><strong>Kulisch, L. K.</strong>, Domínguez Rojas, A. L., Schneider, S., &amp; Voigt, B. (2024, June). Freedom, faith, and fears: Unraveling the association between cultural socialization goals and child anxiety. Presentation at the 53rd Annual Meeting of the Jean Piaget Society, Toronto, Canada.</li>
+              <li><strong>Kulisch, L. K.</strong>, Plank, L., Exner, A., Schneider, S., Seehagen, S., Zlomuzica, A., &amp; Voigt, B. (2024, June). The effects of parental cognitions on dynamic parent-child interactions and separation anxiety symptoms. Presentation at the Empirical Investigations of Situated Cognition RTG workshop, Osnabrück, Germany.</li>
+              <li><strong>Kulisch, L. K.</strong>, Arumäe, K., Briley, D. A., &amp; Vainik, U. (2022, April). Causal relationships between childhood obesity and its neurobehavioral correlates: A twin modelling study. Presentation at The British Feeding and Drinking Group (BFDG) 46th Annual Meeting, Online / Leeds, UK.</li>
+            </ul>
+          </div>
 
-  <h3>Articles without peer-review (1)</h3>
-  <ul>
-    <li>Engelhardt-Lohrke, C., <strong>Kulisch, L. K.</strong>, & Jagla-Franke, M. (2021). COVID-19-Pandemie: Geschwister von Kindern mit Erkrankung oder Behinderung. <em>Kinder- und Jugendmedizin, 21</em>(1), 66.</li>
-  </ul>
+          <div class="pub-category">
+            <h3>Conference posters (2)</h3>
+            <ul class="pub-list">
+              <li><strong>Kulisch, L. K.</strong>, Voigt, B., Lu, S., Seehagen, S., &amp; Schneider, S. (2023, November). The influence of culture on the parental perception of child separation anxiety disorder symptoms in Germany and China. Poster &amp; Speed Presentation at Conference of the Health and Development Institute, Ruhr University Bochum, Germany.</li>
+              <li><strong>Kulisch, L. K.</strong>, &amp; Engelhardt-Lohrke, C. (2022, May). Die Rolle von Bindungsverhalten bei der Entstehung von psychischen Problemen bei Geschwistern von Kindern mit chronischen Erkrankungen. Poster at 79. Tagung der Psychosozialen Arbeitsgemeinschaft in der Pädiatrischen Onkologie und Hämatologie, Heidelberg, Germany.</li>
+            </ul>
+          </div>
 
-  <h3>Invited talks (5)</h3>
-  <ul>
+          <div class="pub-category">
+            <h3>Popular scientific magazine articles (2)</h3>
+            <ul class="pub-list">
+              <li>Familien sind widerstandsfähig! Eine psychologische Perspektive auf Familienbeziehungen in der Kinderonkologie. <em>Wir – Die Zeitschrift der Deutschen Kinderkrebsstiftung und der Deutschen Leukämie-Forschungshilfe e.V.</em>, November 2023.</li>
+              <li>Geschwisterkinder und die Rolle der Eltern-Kind-Bindung. <em>Wir – Die Zeitschrift der Deutschen Kinderkrebsstiftung und der Deutschen Leukämie-Forschungshilfe e.V.</em>, August 2022.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-    <li><strong>Kulisch, L. K.</strong>, Dong, S., Lu, S., Schneider, S., & Voigt, B. (2025, December). Pathology or normality? How parents in different cultures assess symptoms of anxiety and seek help. Invited talk at the Personality Psychology Research Colloquium at Ruhr University Bochum, Bochum, Germany.</li>
+      <section id="teaching">
+        <div class="section-card">
+          <h2>Teaching</h2>
+          <ul class="compact-list">
+            <li>Research Seminar: Clinical Psychology, Seminar, Ruhr University Bochum, Summer Semester 2026</li>
+            <li>Research Seminar: Clinical Psychology, Seminar, Ruhr University Bochum, Fall Semester 2025/26</li>
+            <li>Evaluation and Research Methodology, Tutorial, Leipzig University, Spring Semester 2022</li>
+            <li>Evaluation and Research Methodology, Tutorial, Leipzig University, Fall Semester 2021/22</li>
+          </ul>
+        </div>
+      </section>
 
-    <li><strong>Kulisch, L. K.</strong> (2025, August). Cultural change, socialization norms, and child anxiety. Invited talk at the Center for Applied Cognitive Science Research Colloquium at the University of Texas at Austin, Austin, USA.</li>
+      <section id="grants">
+        <div class="section-card">
+          <h2>Grants &amp; Awards</h2>
+          <ul class="compact-list">
+            <li>Project International (PR.INT) Travel Grant, 2025, Ruhr University Bochum Research School, ca. 3,500.00 Euro</li>
+            <li>Early Career Scientist Independence Grant (as co-applicant; PI Dr. Babett Voigt), 2024, German Center for Mental Health (DZPG), 1,500.00 Euro</li>
+            <li>Seed Funding, 2024, Health and Development Institute, Ruhr University Bochum, 2,000.00 Euro</li>
+            <li>Poster Prize, 2023, Conference of the Health and Development Institute, Ruhr University Bochum</li>
+            <li>Recognition Award of German Childhood Cancer Aftercare (to the work group), 2023, “Deutsche Kinderkrebsnachsorge” Foundation for Chronically Ill Children, 5,000.00 Euro</li>
+            <li>Erasmus+ Trainee Scholarship, 2021, Tartu University / Leipzig University, Estonia / Germany, ca. 1,900.00 Euro</li>
+            <li>Summer School Participation Scholarship, 2019, Archimedes Foundation, Estonia, 225.00 Euro</li>
+          </ul>
+        </div>
+      </section>
 
-    <li><strong>Kulisch, L. K.</strong>, Dong, S., Lu, S., Schneider, S., & Voigt, B. (2025, July). Ist das noch normal? Wie Eltern in verschiedenen Kulturen Angstsymptome bewerten und Hilfe suchen. Invited talk at the Psychological Research Methods and Evaluation Research Colloquium at Hildesheim University, Hildesheim, Germany.</li>
+      <section id="memberships">
+        <div class="section-card">
+          <h2>Memberships &amp; Journal Roles</h2>
 
-    <li><strong>Kulisch, L. K.</strong> (2025, July). The IMPECC-De study: IMpact of PEdiatric Cancer on families across Cultures. Invited talk at the West German Proton Therapy Center (WPE) Research Colloquium at Essen University Hospital, Essen, Germany.</li>
+          <h3>Memberships in scientific associations</h3>
+          <ul class="compact-list">
+            <li>DGPs – German Psychological Society</li>
+            <li>IACCP – International Association for Cross-Cultural Psychology</li>
+            <li>ISSBD – International Society for the Study of Behavioural Development</li>
+          </ul>
 
-    <li><strong>Kulisch, L. K.</strong>, Plank, L., Exner, A., Schneider, S., Seehagen, S., Zlomuzica, A., & Voigt, B. (2024, May). Coregulation dynamics between mothers and children in separation situations: Does social orientation influence separation anxiety aymptoms? Invited talk at the Developmental Psychology Research Colloquium at Ruhr University Bochum, Bochum, Germany.</li>
-  </ul>
+          <h3>Ad-hoc reviewer</h3>
+          <ul class="compact-list">
+            <li>Journal of Pediatric Psychology</li>
+          </ul>
+        </div>
+      </section>
 
-  <h3>Conference presentations (5)</h3>
-  <ul>
-    <li><strong>Kulisch, L. K.</strong>, Dong, S., Lu, S., Schneider, S., & Voigt, B. (2025, March). Pathology or normalcy? Culture and child separation anxiety. Presentation at Situated Cognition Spring School 2025, Bochum, Germany.</li>
+      <section id="contact">
+        <div class="section-card">
+          <h2>Contact</h2>
+          <div class="contact-grid">
+            <div>
+              <p><strong>Email:</strong> leonard [dot] kulisch [at] rub [dot] de</p>
+              <p>
+                <strong>Address:</strong><br />
+                Ruhr-Universität Bochum<br />
+                Forschungs- und Behandlungszentrum für psychische Gesundheit (FBZ)<br />
+                Klinische Kinder- und Jugendpsychologie<br />
+                Massenbergstraße 9–13<br />
+                44787 Bochum
+              </p>
+            </div>
 
-    <li><strong>Kulisch, L. K.</strong>, Lu, S., Dong, S., Schneider, S., & Voigt, B. (2024, September). The influence of culture on the parental perception of child separation anxiety disorder symptoms in Germany and China. Presentation at 53rd DGPs Congress / 15th ÖGP Conference, Vienna, Austria.</li>
+            <div>
+              <ul class="contact-links">
+                <li><a href="https://fbz-bochum.de/person/leonard-k-kulisch" target="_blank" rel="noopener noreferrer">Profile @ Ruhr University Bochum</a></li>
+                <li><a href="https://www.researchgate.net/profile/Leonard-Kulisch" target="_blank" rel="noopener noreferrer">Profile @ ResearchGate</a></li>
+                <li><a href="https://scholar.google.com/citations?user=Ixd0u3YAAAAJ" target="_blank" rel="noopener noreferrer">Profile @ Google Scholar</a></li>
+                <li><a href="https://orcid.org/0000-0002-9754-0411" target="_blank" rel="noopener noreferrer">Profile @ ORCID</a></li>
+                <li><a href="https://www.scopus.com/authid/detail.uri?authorId=57226301450" target="_blank" rel="noopener noreferrer">Profile @ Scopus</a></li>
+                <li><a href="https://osf.io/t4frs/" target="_blank" rel="noopener noreferrer">Profile @ Open Science Framework (OSF)</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <li><strong>Kulisch, L. K.</strong>, Domínguez Rojas, A. L., Schneider, S., & Voigt, B. (2024, June). Freedom, faith, and fears: Unraveling the association between cultural socialization goals and child anxiety. Presentation at the 53rd Annual Meeting of the Jean Piaget Society, Toronto, Canada.</li>
-
-    <li><strong>Kulisch, L. K.</strong>, Plank, L., Exner, A., Schneider, S., Seehagen, S., Zlomuzica, A., & Voigt, B. (2024, June). The effects of parental cognitions on dynamic parent-child interactions and separation anxiety aymptoms. Presentation at the Empirical Investigations of Situated Cognition RTG workshop, Osnabrück, Germany.</li>
-
-    <li><strong>Kulisch, L. K.</strong>, Arumäe, K., Briley, D. A., & Vainik, U. (2022, April). Causal relationships between childhood obesity and its neurobehavioral correlates: A twin modelling study. Presentation at The British Feeding and Drinking Group (BFDG) 46th Annual Meeting, Online / Leeds, UK.</li>
-  </ul>
-
-  <h3>Conference posters (2)</h3>
-  <ul>
-    <li><strong>Kulisch, L. K.</strong>, Voigt, B., Lu, S., Seehagen, S., & Schneider, S. (2023, November). The influence of culture on the parental perception of child separation anxiety disorder symptoms in Germany and China. Poster & Speed Presentation at Conference of the Health and Development Institute, Ruhr University Bochum, Germany.</li>
-
-    <li><strong>Kulisch, L. K.</strong>, & Engelhardt-Lohrke, C. (2022, May). Die Rolle von Bindungsverhalten bei der Entstehung von psychischen Problemen bei Geschwistern von Kindern mit chronischen Erkrankungen. Poster at 79. Tagung der Psychosozialen Arbeitsgemeinschaft in der Pädiatrischen Onkologie und Hämatologie, Heidelberg, Germany.</li>
-  </ul>
-
-  <h3>Popular scientific magazine articles (2)</h3>
-  <ul>
-    <li>Familien sind widerstandsfähig! Eine psychologische Perspektive auf Familienbeziehungen in der Kinderonkologie. <em>Wir – Die Zeitschrift der Deutschen Kinderkrebsstiftung und der Deutschen Leukämie-Forschungshilfe e.V.</em>, November 2023.</li>
-
-    <li>Geschwisterkinder und die Rolle der Eltern-Kind-Bindung. <em>Wir – Die Zeitschrift der Deutschen Kinderkrebsstiftung und der Deutschen Leukämie-Forschungshilfe e.V.</em>, August 2022.</li>
-  </ul>
-</section>
-
-
-    <section id="teaching">
-      <h2>Teaching</h2>
-      <ul>
-        <li>Research Seminar: Clinical Psychology, Seminar, Ruhr University Bochum, Summer Semester 2026</li>
-        <li>Research Seminar: Clinical Psychology, Seminar, Ruhr University Bochum, Fall Semester 2025/26</li>
-        <li>Evaluation and Research Methodology, Tutorial, Leipzig University, Spring Semester 2022</li>
-        <li>Evaluation and Research Methodology, Tutorial, Leipzig University, Fall Semester 2021/22</li>
-        </ul>
-    </section>
-
-    <section id="grants">
-      <h2>Grants & Awards</h2>
-      <ul>
-        <li>Project International (PR.INT) Travel Grant, 2025, Ruhr University Bochum Research School, ca. 3,500.00 Euro</li>
-        <li>Early Career Scientist Independence Grant (as co-applicant; PI Dr. Babett Voigt), 2024, German Center for Mental Health (DZPG), 1,500.00 Euro</li>
-        <li>Seed Funding, 2024, Health and Development Institute, Ruhr University Bochum, 2,000.00 Euro</li>
-        <li>Poster Prize, 2023, Conference of the Health and Development Institute, Ruhr University Bochum</li>
-        <li>Recognition Award of German Childhood Cancer Aftercare (to the work group), 2023, “Deutsche Kinderkrebsnachsorge” Foundation for Chronically Ill Children, 5,000.00 Euro</li>
-        <li>Erasmus+ Trainee Scholarship, 2021, Tartu University/ Leipzig University, Estonia/ Germany, ca. 1,900.00 Euro</li>
-        <li>Summer School Participation Scholarship, 2019, Archimedes Foundation, Estonia, 225.00 Euro</li>
-      </ul>
-    </section>
-
-    <section id="memberships">
-      <h2>Memberships & Journal Roles</h2>
-      <h3>Memberships in scientific associations</h3>
-      <ul>
-        <li>DGPs - German Psychological Society</li>
-        <li>IACCP - International Association for Cross-Cultural Psychology</li>
-        <li>ISSBD - International Society for the Study of Behavioural Development</li>
-      </ul>
-      <h3>Ad-hoc reviewer</h3>
-      <ul>
-        <li>Journal of Pediatric Psychology</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: leonard [dot] kulisch [at] rub [dot] de</p>
-      <p> Ruhr-Universität Bochum </br>
-	Forschungs- und Behandlungszentrum für psychische Gesundheit (FBZ) </br>
-	Klinische Kinder- und Jugendpsychologie </br>
-	Massenbergstraße 9-13 </br>
-	44787 Bochum </p>
-      <a href="https://fbz-bochum.de/person/leonard-k-kulisch">Profile @ Ruhr University Bochum</a></br>
-      <a href="https://www.researchgate.net/profile/Leonard-Kulisch">Profile @ ResearchGate</a></br>
-      <a href="https://scholar.google.com/citations?user=Ixd0u3YAAAAJ">Profile @ Google Scholar</a></br>
-      <a href="https://orcid.org/0000-0002-9754-0411">Profile @ ORCID</a></br>
-      <a href="https://www.scopus.com/authid/detail.uri?authorId=57226301450">Profile @ Scopus</a></br>
-      <a href="https://osf.io/t4frs/">Profile @ Open Science Framework (OSF)</a></p>
-    </section>
+      <footer class="site-footer">
+        <p>&copy; 2026 Leonard K. Kulisch</p>
+      </footer>
+    </div>
   </main>
-  <footer>
-    <p>&copy; 2026 Kulisch</p>
-  </footer>
 </body>
 </html>
