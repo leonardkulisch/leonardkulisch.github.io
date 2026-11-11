@@ -35,6 +35,8 @@
       --shadow: 0 10px 30px rgba(16, 42, 67, 0.08);
       --radius: 16px;
       --max-width: 1080px;
+      --notice-height: 100px;
+      --header-height: 72px;
     }
 
     * {
@@ -43,10 +45,12 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--notice-height) + var(--header-height) + 18px);
     }
 
     body {
       margin: 0;
+      padding-top: var(--notice-height);
       font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -74,9 +78,73 @@
       margin: 0 auto;
     }
 
+    /* Fixed contact notice: violet signals urgency without imitating an error popup. */
+    .service-notice {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 2000;
+      width: 100%;
+      padding: 0.85rem 0;
+      background: #4731a7;
+      color: #ffffff;
+      border-bottom: 3px solid #baf0d8;
+      box-shadow: 0 3px 14px rgba(27, 22, 85, 0.16);
+    }
+
+    .service-notice-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .notice-symbol {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.82);
+      border-radius: 50%;
+      font-weight: 700;
+      line-height: 1;
+      margin-top: 0.2rem;
+    }
+
+    .service-notice p {
+      margin: 0;
+      font-size: 0.91rem;
+      line-height: 1.48;
+    }
+
+    .service-notice .notice-heading {
+      display: block;
+      font-weight: 700;
+      letter-spacing: 0.015em;
+      margin-bottom: 0.15rem;
+    }
+
+    .service-notice .notice-email {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .service-notice a,
+    .service-notice a:hover,
+    .service-notice a:focus-visible {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .service-notice a:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
+
     .site-header {
       position: sticky;
-      top: 0;
+      top: var(--notice-height);
       z-index: 1000;
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
@@ -240,7 +308,7 @@
 
     section {
       margin-bottom: 2rem;
-      scroll-margin-top: 96px;
+      scroll-margin-top: calc(var(--notice-height) + var(--header-height) + 18px);
     }
 
     .section-card {
@@ -318,6 +386,11 @@
       border-bottom: none;
     }
 
+    /* Long DOI URLs should not create horizontal scrolling on phones. */
+    .pub-list a {
+      overflow-wrap: anywhere;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -361,6 +434,29 @@
     }
 
     @media (max-width: 700px) {
+      :root {
+        --notice-height: 160px;
+        --header-height: 120px;
+      }
+
+      .service-notice {
+        padding: 0.65rem 0;
+      }
+
+      .service-notice-inner {
+        gap: 0.6rem;
+      }
+
+      .service-notice p {
+        font-size: 0.82rem;
+      }
+
+      .notice-symbol {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-top: 0.1rem;
+      }
+
       .header-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -388,6 +484,19 @@
 </head>
 
 <body>
+  <aside class="service-notice" id="service-notice" aria-label="Important email service notice">
+    <div class="container service-notice-inner">
+      <span class="notice-symbol" aria-hidden="true">i</span>
+      <p>
+        <span class="notice-heading">Important contact update</span>
+        Following a cyberattack on Leipzig University's IT systems, my university email
+        (leonard [dot] kulisch [at] uni-leipzig [dot] de) is currently offline.
+        Please contact me instead at <span class="notice-email">leonard [dot] kulisch [at] rub [dot] de</span>.
+        <a href="https://www.uni-leipzig.de/statement-der-rektorin-zum-wiederanlauf-der-it-infrastruktur/" target="_blank" rel="noopener noreferrer">Official university update</a>.
+      </p>
+    </div>
+  </aside>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">Dr. Leonard K. Kulisch</div>
@@ -632,7 +741,8 @@
           <h2>Contact</h2>
           <div class="contact-grid">
             <div>
-              <p><strong>Email:</strong> leonard [dot] kulisch [at] uni-leipzig [dot] de</p>
+              <p><strong>Temporary contact email:</strong> <strong>leonard [dot] kulisch [at] rub [dot] de</strong></p>
+              <p class="muted">Replace [dot] with a period and [at] with @ to write the address. The Leipzig University address (leonard [dot] kulisch [at] uni-leipzig [dot] de) is currently offline following the cyberattack.</p>
               <p>
                 <strong>Address:</strong><br />
                 Universität Leipzig<br />
@@ -663,5 +773,30 @@
       </footer>
     </div>
   </main>
+
+  <script>
+    // Keep the page, navigation, and section links below the fixed notice.
+    // Re-measure automatically when the notice wraps onto additional lines.
+    (function () {
+      const notice = document.getElementById('service-notice');
+      const header = document.querySelector('.site-header');
+      if (!notice || !header) return;
+
+      function updateOffsets() {
+        document.documentElement.style.setProperty('--notice-height', Math.ceil(notice.getBoundingClientRect().height) + 'px');
+        document.documentElement.style.setProperty('--header-height', Math.ceil(header.getBoundingClientRect().height) + 'px');
+      }
+
+      updateOffsets();
+      if (typeof ResizeObserver !== 'undefined') {
+        const observer = new ResizeObserver(updateOffsets);
+        observer.observe(notice);
+        observer.observe(header);
+      } else {
+        window.addEventListener('resize', updateOffsets, { passive: true });
+      }
+      document.fonts?.ready.then(updateOffsets);
+    }());
+  </script>
 </body>
 </html>
